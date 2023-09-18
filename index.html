@@ -39,14 +39,14 @@
             const userLng = position.coords.longitude;
 
             // Define the target location coordinates
-            const targetLat = 10.045104;
-            const targetLng = 76.329043;
+            const targetLat = 10.044989;
+            const targetLng = 76.329059;
 
             // Calculate the distance between user and target location
             const distance = calculateDistance(userLat, userLng, targetLat, targetLng);
 
             // Adjust AR content visibility based on distance threshold (50 meters)
-            if (distance <= 50) {
+            if (distance <= 0.1) {
                 // Show the 3D model
                 document.querySelector('a-marker').setAttribute('visible', true);
             } else {
