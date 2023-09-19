@@ -1,77 +1,15 @@
-
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
-    <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
-    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
-    <script src="https://raw.githack.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
+<title>AR.js A-Frame Location-based</title>
+<script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+<script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/master/three.js/build/ar-threex-location-only.js'></script>
+<script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js'></script>
 </head>
-
-<body style="margin: 0; overflow: hidden;">
-    <a-scene
-        renderer="logarithmicDepthBuffer: true;"
-        embedded
-        loading-screen="enabled: false;"
-        arjs="sourceType: webcam; debugUIEnabled: false;"
-    >
-        <a-assets>
-            <a-asset-item
-                id="animated-asset"
-                src="assets/asset.gltf"
-            ></a-asset-item>
-        </a-assets>
-        <a-marker>
-            <a-entity
-                look-at="[gps-camera]"
-                animation-mixer="loop: repeat"
-                gltf-model="#animated-asset"
-                scale="10 10 10"
-                position="0 0 -3" 
-            ></a-entity>
-        </a-marker>
-        <a-camera gps-camera rotation-reader></a-camera>
-    </a-scene>
-    <script>
-        navigator.geolocation.watchPosition(function (position) {
-            const userLat = position.coords.latitude;
-            const userLng = position.coords.longitude;
-                console.log(userLat);
-                console.log(userLng);
-            // Define the target location coordinates
-            const targetLat = 10.044989;
-            const targetLng = 76.329059;
-            // Calculate the distance between user and target location
-            const distance = calculateDistance(userLat, userLng, targetLat, targetLng);
-
-            // Adjust AR content visibility based on distance threshold (50 meters)
-            if (distance <= 0.1) {
-                // Show the 3D model
-                document.querySelector('a-marker').setAttribute('visible', true);
-            } else {
-                // Hide the 3D model
-                document.querySelector('a-marker').setAttribute('visible', false);
-            }
-        });
-
-        function degToRad(degrees) {
-            return degrees * (Math.PI / 180);
-        }
-
-        function calculateDistance(lat1, lon1, lat2, lon2) {
-            var R = 6371; // Radius of the earth in km
-            var dLat = degToRad(lat2 - lat1); // deg2rad below
-            var dLon = degToRad(lon2 - lon1);
-            var a =
-                Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-                Math.cos(degToRad(lat1)) * Math.cos(degToRad(lat2)) *
-                Math.sin(dLon / 2) * Math.sin(dLon / 2);
-            var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-            var d = R * c; // Distance in km
-            return d;
-        }
-    </script>
+<body>
+<a-scene vr-mode-ui='enabled: false' arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false' renderer='antialias: true; alpha: true'>
+    <a-camera gps-new-camera='gpsMinDistance: 50'></a-camera>
+    <a-entity material='color: red' geometry='primitive: box' gps-new-entity-place="latitude: <10.045015; longitude: 76.329079" scale="10 10 10"></a-entity>
+</a-scene>
 </body>
 </html>
