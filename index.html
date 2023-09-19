@@ -20,7 +20,7 @@
         <a-assets>
             <a-asset-item
                 id="animated-asset"
-                src="assets/asset.glb"
+                src="assets/asset.gltf"
             ></a-asset-item>
         </a-assets>
         <a-marker>
@@ -28,7 +28,7 @@
                 look-at="[gps-camera]"
                 animation-mixer="loop: repeat"
                 gltf-model="#animated-asset"
-                scale="0.7643646320311099 0.7643646320311099 0.7643646320311099"
+                scale="10 10 10"
                 position="0 0 -3" 
             ></a-entity>
         </a-marker>
@@ -43,9 +43,6 @@
             // Define the target location coordinates
             const targetLat = 10.044989;
             const targetLng = 76.329059;
-              console.log(targetLat);
-              console.log(targetLng);
-
             // Calculate the distance between user and target location
             const distance = calculateDistance(userLat, userLng, targetLat, targetLng);
 
