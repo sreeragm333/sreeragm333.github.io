@@ -10,7 +10,7 @@
 <body>
     
 <a-scene vr-mode-ui='enabled: false' arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false' renderer='antialias: true; alpha: true'>
-    <a-camera gps-new-camera='gpsMinDistance: 5'  maxDistance="20"  ></a-camera>
+    <a-camera gps-new-camera='gpsMinDistance: 5'  maxDistance="20" gps-camera zoom="0.5" ></a-camera>
     <a-entity  gltf-model="/assets/scene.gltf" gps-new-entity-place="latitude: 10.045083; longitude: 76.329060" scale="1 1 1"></a-entity>
 </a-scene>
 </body>
