@@ -35,8 +35,8 @@ function isUserNearLocation(userLatt, userLong, locationLatt, locationLong, thre
 function updateModel(newLatitude, newLongitude) {
     const modelElement = document.getElementById('gltfModel');
     if (modelElement) {
-        modelElement.setAttribute('gps-new-entity-place', `${newLatitude} ${newLongitude}`);
-        // console.log("Model updated to new location:", newLatitude, newLongitude);
+        modelElement.setAttribute('gps-new-entity-place', `latitude: ${newLatitude}; longitude: ${newLongitude};`);
+        console.log("Model updated to new location:", newLatitude, newLongitude);
     }
 }
 
@@ -45,7 +45,7 @@ function handleLocationUpdate(position) {
     const userLatt = position.coords.latitude;
     const userLong = position.coords.longitude;
 
-    if (locIndex !== -1 && locIndex < locations.length) {
+    if (locIndex !== -1 ) {
         const thresholdDistance = 200; // Set your desired threshold distance
 
         const isNearLocation = isUserNearLocation(userLatt, userLong, locations[locIndex].x1, locations[locIndex].x2, thresholdDistance);
@@ -58,7 +58,8 @@ function handleLocationUpdate(position) {
             if (setModel) {
                 updateModel(newLatitude, newLongitude);
                 setModel = false;
-                localStorage.setItem(`model${locIndex}`, "true");
+
+                // localStorage.setItem(`model${locIndex}`, "true");
             }
         } else {
             // console.log("User is not near the location.");
