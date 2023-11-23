@@ -46,7 +46,7 @@ function handleLocationUpdate(position) {
     const userLong = position.coords.longitude;
 
     if (locIndex !== -1 ) {
-        const thresholdDistance = 200; // Set your desired threshold distance
+        const thresholdDistance = 150; // Set your desired threshold distance
 
         const isNearLocation = isUserNearLocation(userLatt, userLong, locations[locIndex].x1, locations[locIndex].x2, thresholdDistance);
         // console.log(isNearLocation,"isnearlocationnnnn")
@@ -80,17 +80,12 @@ function handleLocationError(error) {
 }
 
 // Function to start watching the user's location
-function startLocationTracking() {
-    if (navigator.geolocation) {
-        navigator.geolocation.watchPosition(
-            handleLocationUpdate,
-            handleLocationError,
-            { enableHighAccuracy: true, maximumAge: 30000, timeout: 27000 }
-        );
-    } else {
-        // console.error('Geolocation is not supported by this browser.');
+navigator.geolocation.watchPosition(
+    handleLocationUpdate,
+    handleLocationError,
+    {
+      enableHighAccuracy: true,
+      maximumAge: 3000,
+      timeout: 2000
     }
-}
-
-// Start location tracking when the script is loaded
-startLocationTracking();
+  );
