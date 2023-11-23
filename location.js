@@ -3,7 +3,7 @@ const locations = [
     { x1: 10.049384, x2: 76.330956 },
     // Add more locations as needed
 ];
-console.log(locations,)
+// console.log(locations)
 
 // Index of the current location
 let locIndex = 0;
@@ -27,7 +27,7 @@ function calcDistance(lat1, lon1, lat2, lon2) {
 // Function to check if the user is near a location within a given threshold
 function isUserNearLocation(userLatt, userLong, locationLatt, locationLong, threshold) {
     const distance = calcDistance(userLatt, userLong, locationLatt, locationLong);
-    console.log("Distance to location:", distance);
+    // console.log("Distance to location:", distance);
     return distance <= threshold;
 }
 
@@ -36,7 +36,7 @@ function updateModel(newLatitude, newLongitude) {
     const modelElement = document.getElementById('gltfModel');
     if (modelElement) {
         modelElement.setAttribute('gps-new-entity-place', `${newLatitude} ${newLongitude}`);
-        console.log("Model updated to new location:", newLatitude, newLongitude);
+        // console.log("Model updated to new location:", newLatitude, newLongitude);
     }
 }
 
@@ -49,7 +49,7 @@ function handleLocationUpdate(position) {
         const thresholdDistance = 200; // Set your desired threshold distance
 
         const isNearLocation = isUserNearLocation(userLatt, userLong, locations[locIndex].x1, locations[locIndex].x2, thresholdDistance);
-        console.log(isNearLocation,"isnearlocationnnnn")
+        // console.log(isNearLocation,"isnearlocationnnnn")
 
         if (isNearLocation) {
             const newLatitude = locations[locIndex].x1;
@@ -61,21 +61,21 @@ function handleLocationUpdate(position) {
                 localStorage.setItem(`model${locIndex}`, "true");
             }
         } else {
-            console.log("User is not near the location.");
+            // console.log("User is not near the location.");
             const modelElement = document.getElementById('gltfModel');
             if (modelElement) {
                 modelElement.setAttribute('gps-new-entity-place', 'null');
-                console.log("Model is reset.");
+                // console.log("Model is reset.");
             }
         }
     } else {
-        console.log("No more locations to check.");
+        // console.log("No more locations to check.");
     }
 }
 
 // Function to handle location errors
 function handleLocationError(error) {
-    console.error('Error getting user location:', error);
+    // console.error('Error getting user location:', error);
 }
 
 // Function to start watching the user's location
@@ -87,7 +87,7 @@ function startLocationTracking() {
             { enableHighAccuracy: true, maximumAge: 30000, timeout: 27000 }
         );
     } else {
-        console.error('Geolocation is not supported by this browser.');
+        // console.error('Geolocation is not supported by this browser.');
     }
 }
 
