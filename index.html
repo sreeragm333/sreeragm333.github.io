@@ -51,6 +51,12 @@
         <!-- Add a video element to capture the camera feed -->
         <video id="cameraFeed" autoplay playsinline style="display: none;"></video>
     
+        <!-- Set up the AR camera -->
+        <a-camera gps-new-camera='gpsMinDistance: 5' maxDistance="20" gps-camera zoom="1"></a-camera>
+        <a-entity gltf-model="/assets/scene.gltf" gps-new-entity-place="latitude: 10.049384; longitude: 76.330956" scale="1 1 1"></a-entity>
+    </a-scene>
+    </div>
+        
         <!-- Use getUserMedia to access the camera -->
         <script>
           // Get the video element
@@ -69,51 +75,8 @@
           } else {
             console.error('getUserMedia is not supported in this browser.');
           }
+
+          
         </script>
-    
-        <!-- Set up the AR camera -->
-        <a-camera gps-new-camera='gpsMinDistance: 5' maxDistance="20" gps-camera zoom="1"></a-camera>
-        <a-entity gltf-model="/assets/scene.gltf" gps-new-entity-place="latitude: 10.045005; longitude: 76.329116" scale="1 1 1"></a-entity>
-    </a-scene>
-        <!-- Content goes here -->
-        <div class="bg-white bg-opacity-10 rounded-xl text-white border border-white">
-            <div class="py-3 flex items-center px-5">
-                <div class="px-9">
-                    Rewards Earned
-                </div>
-                <div>
-                    <button>X</button>
-                </div>
-            </div>
-            <div class="flex justify-center items-center text-bold border border-white flex flex-col py-6 ">
-                <img src="reward.jpg" class="rounded-full p-2">
-                <h3>Congo u won a food coupon</h3>
-            </div>
-            <div class="flex justify-center items-center px-3 py-4">
-                <button
-                    class="bg-gradient-to-r from-yellow-500 to-red-500 text-white font-semibold py-1 px-4 rounded-xl border border-white ">
-                    Claim
-                </button>
-
-            </div>
-        </div>
-    </div>
-    <div class="h-[10%] mb-0 w-screen " >
-        <img src="bg.png" alt="bg" class="w-screen h-20 absolute bottom-0 ">
-        <div>
-            <img src="map-icon.png" alt="camera" class="w-11 h-11 my-4 mx-5 absolute bottom-0 border-b-20 border-#1E1E1E">
-        </div>
-        <div>
-            <img src="float.png" alt="map" class="w-11 h-11 absolute bottom-1 right-0 mr-5 mb-4">
-
-
-        </div>
-        <div>
-            <img src="camera.png" alt="btn" class="w-20 absolute left-1/2 transform -translate-x-1/2 bottom-10 right-0.5 mb-3">
-
-
-        </div>
-    </div> 
-
 </body>
 </html>
