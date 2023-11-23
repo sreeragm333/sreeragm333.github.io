@@ -27,15 +27,17 @@ function calcDistance(lat1, lon1, lat2, lon2) {
 // Function to check if the user is near a location within a given threshold
 function isUserNearLocation(userLatt, userLong, locationLatt, locationLong, threshold) {
     const distance = calcDistance(userLatt, userLong, locationLatt, locationLong);
-    // console.log("Distance to location:", distance);
+    console.log("Distance to location:", distance);
     return distance <= threshold;
 }
 
 // Function to update the model based on the user's location
 function updateModel(newLatitude, newLongitude) {
     const modelElement = document.getElementById('gltfModel');
+    console.log(modelElement,"model element")
     if (modelElement) {
         modelElement.setAttribute('gps-new-entity-place', `latitude: ${newLatitude}; longitude: ${newLongitude};`);
+        modelElement.setAttribute('gltf-model', `./assets/scene.gltf`)
         console.log("Model updated to new location:", newLatitude, newLongitude);
     }
 }
@@ -49,7 +51,7 @@ function handleLocationUpdate(position) {
         const thresholdDistance = 150; // Set your desired threshold distance
 
         const isNearLocation = isUserNearLocation(userLatt, userLong, locations[locIndex].x1, locations[locIndex].x2, thresholdDistance);
-        // console.log(isNearLocation,"isnearlocationnnnn")
+        console.log(isNearLocation,"isnearlocationnnnn")
 
         if (isNearLocation) {
             const newLatitude = locations[locIndex].x1;
@@ -62,11 +64,11 @@ function handleLocationUpdate(position) {
                 // localStorage.setItem(`model${locIndex}`, "true");
             }
         } else {
-            // console.log("User is not near the location.");
+            console.log("User is not near the location.");
             const modelElement = document.getElementById('gltfModel');
             if (modelElement) {
-                modelElement.setAttribute('gps-new-entity-place', 'null');
-                // console.log("Model is reset.");
+              modelElement.setAttribute('gps-new-entity-place', `null`);
+              console.log("the model is removed set");
             }
         }
     } else {
@@ -76,7 +78,7 @@ function handleLocationUpdate(position) {
 
 // Function to handle location errors
 function handleLocationError(error) {
-    // console.error('Error getting user location:', error);
+    console.error('Error getting user location:', error);
 }
 
 // Function to start watching the user's location
