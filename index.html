@@ -44,7 +44,7 @@
 </style>
 <script src="https://cdn.tailwindcss.com"></script>
 </head>
-
+<script src="location.js"></script>
   <body class="!m-0 p-0">
     <div class="flex justify-center items-center min-h-screen">
       <a-scene vr-mode-ui='enabled: false' arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false' renderer='antialias: true; alpha: true'>
@@ -52,8 +52,8 @@
         <video id="cameraFeed" autoplay playsinline style="display: none;"></video>
     
         <!-- Set up the AR camera -->
-        <a-camera gps-new-camera='gpsMinDistance: 1'  gps-camera zoom="1"></a-camera>
-        <a-entity gltf-model="./assets/scene.gltf" gps-new-entity-place="latitude: 10.049384; longitude: 76.330956" scale="1 1 1"></a-entity>
+        <a-camera gps-new-camera='gpsMinDistance: 1'  gps-camera zoom="1" arjs-look-controls="smoothingFactor: 0.1"></a-camera>
+        <a-entity gltf-model="./assets/scene.gltf" gps-new-entity-place="" scale="1 1 1" id="gltfModel"></a-entity>
     </a-scene>
     </div>
         
@@ -75,8 +75,6 @@
           } else {
             console.error('getUserMedia is not supported in this browser.');
           }
-
-          
-        </script>
+          </script>
 </body>
 </html>
