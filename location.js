@@ -32,6 +32,7 @@ function calcDistance(lat1, lon1, lat2, lon2) {
 function isUserNearLocation(userLatt, userLong, locationLatt, locationLong, threshold) {
     const distance = calcDistance(userLatt, userLong, locationLatt, locationLong);
     console.log("Distance to location:", distance);
+    console.log("threshold", threshold)
     return distance <= threshold;
 }
 
