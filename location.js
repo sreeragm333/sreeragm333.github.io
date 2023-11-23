@@ -1,6 +1,6 @@
 // Example location data
 const locations = [
-    { x1: 10.049384, x2: 76.330956 },
+    { x1: 10.049085, x2: 76.330842 },
     // Add more locations as needed
 ];
 // console.log(locations)
