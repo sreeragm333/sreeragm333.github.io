@@ -4,7 +4,7 @@
 
 // ];
 const locations = [
-    { x1: 10.049406, x2: 76.330928 },
+    { x1: 10.049389, x2: 76.330982 },
 
 ];
 // console.log(locations)
@@ -41,7 +41,7 @@ function updateModel(newLatitude, newLongitude) {
     console.log(modelElement,"model element")
     if (modelElement) {
         modelElement.setAttribute('gps-new-entity-place', `latitude: ${newLatitude}; longitude: ${newLongitude};`);
-        modelElement.setAttribute('gltf-model', `./assets/scene.gltf`)
+        modelElement.setAttribute('gltf-model', `../assets/Dhishna_logo_AR.glb`)
         console.log("Model updated to new location:", newLatitude, newLongitude);
     }
 }
@@ -52,7 +52,7 @@ function handleLocationUpdate(position) {
     const userLong = position.coords.longitude;
 
     if (locIndex !== -1 ) {
-        const thresholdDistance = 150; // Set your desired threshold distance
+        const thresholdDistance = 400; // Set your desired threshold distance
 
         const isNearLocation = isUserNearLocation(userLatt, userLong, locations[locIndex].x1, locations[locIndex].x2, thresholdDistance);
         console.log(isNearLocation,"isnearlocationnnnn")
