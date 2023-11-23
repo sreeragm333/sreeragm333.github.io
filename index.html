@@ -64,7 +64,7 @@
     
           // Check if getUserMedia is available in the browser
           if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-            navigator.mediaDevices.getUserMedia({ video: true })
+            navigator.mediaDevices.getUserMedia({ video: {facingMode: 'environment'} })
               .then(function (stream) {
                 // Assign the camera stream to the video element
                 video.srcObject = stream;
