@@ -1,7 +1,11 @@
 // Example location data
+// const locations = [
+//     { x1: 10.049085, x2: 76.330842 },
+
+// ];
 const locations = [
-    { x1: 10.049085, x2: 76.330842 },
-    // Add more locations as needed
+    { x1: 10.049406, x2: 76.330928 },
+
 ];
 // console.log(locations)
 
