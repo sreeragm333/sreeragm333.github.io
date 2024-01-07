@@ -1,80 +1,101 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>AR.js A-Frame Location-based</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
-  <script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/master/three.js/build/ar-threex-location-only.js'></script>
-  <script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js'></script>
-  <script src="https://rawgit.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
-  <style>
-    body{
-        background-image: url(tbg.webp);
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: center center;
-        position: fixed;
-        background-attachment: fixed;
-    }
-    @media (max-width: 576px) {
-  .rewards {
-    width: 50%;
-  }
-}
-.rewards h3 {
-  font-size: 24px;
-}
-.rewards h3 {
-  font-size: 1.5rem;
-}
-.rewards {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-.rewards {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: auto auto;
-  grid-gap: 10px;
-}
 
-    
-</style>
-<script src="https://cdn.tailwindcss.com"></script>
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+
+  <title>Esigned</title>
+
+  <!-- slider stylesheet -->
+  <!-- slider stylesheet -->
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+
+  <!-- fonts style -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Poppins:400,700&display=swap" rel="stylesheet">
+  <!-- Custom styles for this template -->
+  <link href="css/style.css" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="css/responsive.css" rel="stylesheet" />
 </head>
-<script src="location.js"></script>
-  <body class="!m-0 p-0">
-    <div class="flex justify-center items-center min-h-screen">
-      <a-scene vr-mode-ui='enabled: false' arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false' renderer='antialias: true; alpha: true'>
-        <!-- Add a video element to capture the camera feed -->
-        <video id="cameraFeed" autoplay playsinline style="display: none;"></video>
-    
-        <!-- Set up the AR camera -->
-        <a-camera gps-new-camera='gpsMinDistance: 1'  gps-camera zoom="1"></a-camera>
-        <a-entity gltf-model="" gps-new-entity-place="" scale="5 5 5" id="gltfModel"></a-entity>
-    </a-scene>
-    </div>
-        
-        <!-- Use getUserMedia to access the camera -->
-        <script>
-          // Get the video element
-          const video = document.getElementById('cameraFeed');
-    
-          // Check if getUserMedia is available in the browser
-          if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-            navigator.mediaDevices.getUserMedia({ video: {facingMode: 'environment'} })
-              .then(function (stream) {
-                // Assign the camera stream to the video element
-                video.srcObject = stream;
-              })
-              .catch(function (error) {
-                console.error('Error accessing camera:', error);
-              });
-          } else {
-            console.error('getUserMedia is not supported in this browser.');
-          }
-          </script>
+
+<body>
+  <div class="hero_area">
+    <!-- header section strats -->
+    <header class="header_section">
+      <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg custom_nav-container pt-3">
+          
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="d-flex ml-auto flex-column flex-lg-row align-items-center">
+              <ul class="navbar-nav  ">
+                
+              </ul>
+              <div class="user_option">
+               
+                
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <!-- end header section -->
+    <!-- slider section -->
+    <section class=" slider_section position-relative">
+      <div class="container">
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+          <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+          </ol>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <div class="row">
+                <div class="col">
+                  <div class="detail-box">
+                    <div>
+                      <h2>
+                        welcome 
+
+                      </h2>
+                      <h1>
+                       you have successfully wasted your time
+                      </h1>
+                      <p>
+                        I respect your intelligence and patience to find this
+                      </p>
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+
+      </div>
+    </section>
+    <!-- end slider section -->
+  </div>
+
+ 
 </body>
+
 </html>
